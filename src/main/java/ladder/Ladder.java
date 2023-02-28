@@ -2,7 +2,6 @@ package ladder;
 
 public class Ladder {
 
-
     private final Row[] rows;
 
 
@@ -25,6 +24,4 @@ public class Ladder {
 
         return nthOfPerson;
     }
-
-
 }
