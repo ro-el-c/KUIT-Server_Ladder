@@ -11,8 +11,8 @@ public class Row {
 
     public void drawLine(int startPosition) {
         validateDrawLinePosition(startPosition);
-        row[startPosition] = 1;
-        row[startPosition + 1] = -1;
+        row[startPosition] = Direction.RIGHT.getDirection();
+        row[startPosition + 1] = Direction.LEFT.getDirection();
     }
 
     public int nextPosition(int nthOfPerson) {
@@ -28,11 +28,11 @@ public class Row {
     }
 
     private boolean isLeft(int nthOfPerson) {
-        return row[nthOfPerson - 1] == -1;
+        return row[nthOfPerson - 1] == Direction.LEFT.getDirection();
     }
 
     private boolean isNoLine(int nthOfPerson) {
-        return row[nthOfPerson - 1] == 0;
+        return row[nthOfPerson - 1] == Direction.CENTER.getDirection();
     }
 
     private void validateNumberOfPerson(int numberOfPerson) {

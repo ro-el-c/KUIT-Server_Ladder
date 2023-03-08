@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ladder.RowTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2023-02-28T16:22:08" hostname="gimjeong-uui-MacBookAir.local" time="0.004">
+<testsuite name="ladder.RowTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2023-03-08T10:33:55" hostname="gimjeong-uui-MacBookAir.local" time="0.005">
   <properties/>
   <testcase name="ValidateDrawLinePositionAlreadyHasLineLeft()" classname="ladder.RowTest" time="0.001"/>
   <testcase name="ValidateDrawLinePositionOverRange()" classname="ladder.RowTest" time="0.0"/>
   <testcase name="사다리 : 11" classname="ladder.RowTest" time="0.0"/>
   <testcase name="만들어진 사다리 이상의 사람 예외 처리" classname="ladder.RowTest" time="0.0"/>
-  <testcase name="1번째 이하의 사람 예외 처리" classname="ladder.RowTest" time="0.0"/>
+  <testcase name="1번째 이하의 사람 예외 처리" classname="ladder.RowTest" time="0.001"/>
   <testcase name="사다리 : 0" classname="ladder.RowTest" time="0.0"/>
   <testcase name="사다리 사람이 0명인 경우 예외처리" classname="ladder.RowTest" time="0.0"/>
   <testcase name="ValidateDrawLinePositionUnderRange()" classname="ladder.RowTest" time="0.001"/>
