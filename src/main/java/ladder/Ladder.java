@@ -4,10 +4,9 @@ public class Ladder {
 
     private final Row[] rows;
 
-
-    public Ladder(int row, int numberOfPerson) {
-        rows = new Row[row];
-        for (int i = 0; i < row; i++) {
+    public Ladder(NaturalNumber row, NaturalNumber numberOfPerson) {
+        rows = new Row[row.getNumber()];
+        for (int i = 0; i < row.getNumber(); i++) {
             rows[i] = new Row(numberOfPerson);
         }
     }

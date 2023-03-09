@@ -3,6 +3,7 @@ package ladder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.NaturalNumber.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RowTest {
@@ -12,7 +13,7 @@ class RowTest {
     void OneColWithoutLine() {
 
         //when
-        int numberOfPerson = 1;
+        NaturalNumber numberOfPerson = createNaturalNumber(1);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -27,7 +28,8 @@ class RowTest {
     void twoColWithLine() {
 
         //when
-        int numberOfPerson = 2;
+        NaturalNumber numberOfPerson = createNaturalNumber(2);
+
         Row row = new Row(numberOfPerson);
         row.drawLine(0);
         //given
@@ -47,7 +49,7 @@ class RowTest {
     @DisplayName("사다리 : 110")
     void oneRowThreeColWithLine() {
         //when
-        int numberOfPerson = 3;
+        NaturalNumber numberOfPerson = createNaturalNumber(3);
         Row row = new Row(numberOfPerson);
 
         row.drawLine(0);
@@ -75,14 +77,14 @@ class RowTest {
     @Test
     @DisplayName("사다리 사람이 0명인 경우 예외처리")
     void validateNumberOfPerson() {
-        assertThrows(IllegalArgumentException.class, () -> new Row(0));
+        assertThrows(IllegalArgumentException.class, () -> createNaturalNumber(0));
     }
 
     @Test
     @DisplayName("만들어진 사다리 이상의 사람 예외 처리")
     void nthOfPersonValidateOutOfRangeMAX() {
         //when
-        int numberOfPerson = 3;
+        NaturalNumber numberOfPerson = createNaturalNumber(3);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -96,7 +98,7 @@ class RowTest {
     @DisplayName("1번째 이하의 사람 예외 처리")
     void nthOfPersonValidateOutOfRangeMIN() {
         //when
-        int numberOfPerson = 3;
+        NaturalNumber numberOfPerson = createNaturalNumber(3);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -110,7 +112,7 @@ class RowTest {
     @Test
     void ValidateDrawLinePositionOverRange() {
         //when
-        int numberOfPerson = 3;
+        NaturalNumber numberOfPerson = createNaturalNumber(3);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -125,7 +127,7 @@ class RowTest {
     @Test
     void ValidateDrawLinePositionUnderRange() {
         //when
-        int numberOfPerson = 3;
+        NaturalNumber numberOfPerson = createNaturalNumber(3);
         Row row = new Row(numberOfPerson);
 
         //given
@@ -139,7 +141,7 @@ class RowTest {
     @Test
     void ValidateDrawLinePositionAlreadyHasLineLeft() {
         //when
-        int numberOfPerson = 3;
+        NaturalNumber numberOfPerson = createNaturalNumber(3);
         Row row = new Row(numberOfPerson);
         row.drawLine(0);
 
@@ -150,7 +152,7 @@ class RowTest {
     @Test
     void ValidateDrawLinePositionAlreadyHasLineRight() {
         //when
-        int numberOfPerson = 3;
+        NaturalNumber numberOfPerson = createNaturalNumber(3);
         Row row = new Row(numberOfPerson);
         row.drawLine(1);
 

@@ -3,6 +3,7 @@ package ladder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.NaturalNumber.createNaturalNumber;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderTest {
@@ -13,8 +14,9 @@ public class LadderTest {
     @DisplayName("만들어진 사다리 이상의 사람 예외 처리")
     void nthOfPersonValidate() {
         //when
-        int numberOfPerson = 3;
-        Ladder ladder = new Ladder(1, numberOfPerson);
+        NaturalNumber numberOfPerson = createNaturalNumber(3);
+        NaturalNumber row = createNaturalNumber(1);
+        Ladder ladder = new Ladder(row, numberOfPerson);
 
         //given
         int nthOfPerson = 4;
@@ -27,8 +29,8 @@ public class LadderTest {
     @DisplayName("1 -1 0 0 / 0 1 -1 0 / 1 -1 0 0")
     void threeRowTwoColWithLine() {
         //when
-        int numberOfPerson = 4;
-        int row = 3;
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
+        NaturalNumber row = createNaturalNumber(3);
         Ladder ladder = new Ladder(row, numberOfPerson);
 
         ladder.drawLine(0,0);

@@ -4,9 +4,9 @@ public class Row {
 
     int[] row;
 
-    public Row(int numberOfPerson) {
-        validateNumberOfPerson(numberOfPerson);
-        row = new int[numberOfPerson];
+
+    public Row(NaturalNumber numberOfPerson) {
+        row = new int[numberOfPerson.getNumber()];
     }
 
     public void drawLine(int startPosition) {
@@ -33,12 +33,6 @@ public class Row {
 
     private boolean isNoLine(int nthOfPerson) {
         return row[nthOfPerson - 1] == Direction.CENTER.getDirection();
-    }
-
-    private void validateNumberOfPerson(int numberOfPerson) {
-        if (numberOfPerson < 1) {
-            throw new IllegalArgumentException();
-        }
     }
 
     private void validateNthOfPerson(int nthOfPerson) {
