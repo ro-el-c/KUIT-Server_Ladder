@@ -4,46 +4,48 @@ public class Row {
 
     int[] row;
 
-
     public Row(NaturalNumber numberOfPerson) {
         row = new int[numberOfPerson.getNumber()];
     }
 
-    public void drawLine(int startPosition) {
+    public void drawLine(Position startPosition) {
         validateDrawLinePosition(startPosition);
-        row[startPosition] = Direction.RIGHT.getDirection();
-        row[startPosition + 1] = Direction.LEFT.getDirection();
+        row[startPosition.getPosition()] = Direction.RIGHT.getDirection();
+        row[startPosition.getPosition() + 1] = Direction.LEFT.getDirection();
     }
 
-    public int nextPosition(int nthOfPerson) {
-        validateNthOfPerson(nthOfPerson);
-
-        if (isNoLine(nthOfPerson)) {
-            return nthOfPerson;
-        }
-        if (isLeft(nthOfPerson)) {
-            return nthOfPerson - 1;
-        }
-        return nthOfPerson + 1;
-    }
-
-    private boolean isLeft(int nthOfPerson) {
-        return row[nthOfPerson - 1] == Direction.LEFT.getDirection();
-    }
-
-    private boolean isNoLine(int nthOfPerson) {
-        return row[nthOfPerson - 1] == Direction.CENTER.getDirection();
-    }
-
-    private void validateNthOfPerson(int nthOfPerson) {
-        if (nthOfPerson > row.length || nthOfPerson < 1) {
+    private void validateDrawLinePosition(Position startPosition) {
+        validatePositionSize(startPosition);
+        if (row[startPosition.getPosition()] == Direction.LEFT.getDirection() ||
+                row[startPosition.getPosition() + 1] == Direction.RIGHT.getDirection()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateDrawLinePosition(int startPosition) {
-        if (startPosition >= row.length - 1 || startPosition < 0 || row[startPosition] == -1 || row[startPosition + 1] == 1) {
+    public void nextPosition(Position position) {
+        validatePositionSize(position);
+        if (isNoLine(position)) {
+            return;
+        }
+        if (isLeft(position)) {
+            position.goLeft();
+            return;
+        }
+        position.goRight();
+    }
+
+    private boolean isLeft(Position position) {
+        return row[position.getPosition()] == Direction.LEFT.getDirection();
+    }
+
+    private boolean isNoLine(Position position) {
+        return row[position.getPosition()] == Direction.CENTER.getDirection();
+    }
+
+    private void validatePositionSize(Position position) {
+        if (!position.isSmaller(row.length)) {
             throw new IllegalArgumentException();
         }
     }
+
 }

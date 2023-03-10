@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static ladder.NaturalNumber.createNaturalNumber;
+import static ladder.Position.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderTest {
@@ -19,10 +20,10 @@ public class LadderTest {
         Ladder ladder = new Ladder(row, numberOfPerson);
 
         //given
-        int nthOfPerson = 4;
+        Position position = createPosition(3);
 
         //then
-        assertThrows(IllegalArgumentException.class,()->ladder.run(nthOfPerson));
+        assertThrows(IllegalArgumentException.class,()->ladder.run(position));
     }
 
     @Test
@@ -33,27 +34,27 @@ public class LadderTest {
         NaturalNumber row = createNaturalNumber(3);
         Ladder ladder = new Ladder(row, numberOfPerson);
 
-        ladder.drawLine(0,0);
-        ladder.drawLine(1,1);
-        ladder.drawLine(2,0);
+        ladder.drawLine(createPosition(0), createPosition(0));
+        ladder.drawLine(createPosition(1),createPosition(1));
+        ladder.drawLine(createPosition(2),createPosition(0));
 
         //given
-        int nthOfPerson = 1;
-
-        //then
-        assertEquals(3,ladder.run(nthOfPerson));
-
-        //given
-        nthOfPerson = 2;
+        Position nthOfPerson = createPosition(0);
 
         //then
         assertEquals(2,ladder.run(nthOfPerson));
 
         //given
-        nthOfPerson = 3;
+        nthOfPerson = createPosition(1);
 
         //then
         assertEquals(1,ladder.run(nthOfPerson));
+
+        //given
+        nthOfPerson = createPosition(2);
+
+        //then
+        assertEquals(0,ladder.run(nthOfPerson));
     }
 
 }

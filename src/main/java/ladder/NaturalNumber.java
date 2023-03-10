@@ -12,13 +12,17 @@ public class NaturalNumber {
     }
 
     public static NaturalNumber createNaturalNumber(int number) {
-        validateNumberOfPerson(number);
+        validateNumber(number);
         return new NaturalNumber(number);
     }
 
-    private static void validateNumberOfPerson(int number) {
-        if (number < 1) {
+    private static void validateNumber(int number) {
+        if (!isNaturalNumber(number)) {
             throw new IllegalArgumentException("자연수는 1이상이어야 합니다.");
         }
+    }
+
+    private static boolean isNaturalNumber(int number) {
+        return number > 0;
     }
 }

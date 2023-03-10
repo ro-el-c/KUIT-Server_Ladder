@@ -11,16 +11,17 @@ public class Ladder {
         }
     }
 
-    public void drawLine(int row, int col) {
-        rows[row].drawLine(col);
+    public void drawLine(Position row, Position col) {
+        rows[row.getPosition()].drawLine(col);
     }
 
-    public int run(int nthOfPerson) {
+
+    public int run(Position position) {
 
         for (int i = 0; i < rows.length; i++) {
-            nthOfPerson = rows[i].nextPosition(nthOfPerson);
+            rows[i].nextPosition(position);
         }
 
-        return nthOfPerson;
+        return position.getPosition();
     }
 }
