@@ -37,4 +37,15 @@ public class Row {
         }
     }
 
+    public void generateRow(StringBuilder sb, Position currentRow, LadderPosition ladderPosition) {
+        for (int i = 0; i < nodes.length; i++) {
+            nodes[i].appendSymbol(sb);
+            if (LadderPosition.createLadderPosition(currentRow, Position.createPosition(i)).equals(ladderPosition)) {
+                sb.append("*");
+            }
+            sb.append(" ");
+        }
+        sb.append("\n");
+    }
+
 }

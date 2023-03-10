@@ -39,4 +39,28 @@ class NodeTest {
         assertEquals(0,position.getPosition());
     }
 
+    @Test
+    void appendSymbolRight() {
+        Node node = Node.createRightNode();
+        StringBuilder sb = new StringBuilder();
+        node.appendSymbol(sb);
+        assertEquals("1",sb.toString());
+    }
+
+    @Test
+    void appendSymbolLeft() {
+        Node node = Node.createLeftNode();
+        StringBuilder sb = new StringBuilder();
+        node.appendSymbol(sb);
+        assertEquals("-1",sb.toString());
+    }
+
+    @Test
+    void appendSymbolCenter() {
+        Node node = Node.createCenterNode();
+        StringBuilder sb = new StringBuilder();
+        node.appendSymbol(sb);
+        assertEquals("0",sb.toString());
+    }
+
 }

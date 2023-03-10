@@ -18,6 +18,10 @@ public class Node {
         }
     }
 
+    public void appendSymbol(StringBuilder sb) {
+        sb.append(direction.getDirection());
+    }
+
     public boolean isRight() {
         return direction.equals(Direction.RIGHT);
     }

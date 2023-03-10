@@ -171,4 +171,48 @@ class RowTest {
         //then
         assertThrows(IllegalArgumentException.class, () -> row.drawLine(createPosition(0)));
     }
+
+    @Test
+    void generateRowWithoutLine() {
+        //when
+        int numberOfPerson = 3;
+        Row row = new Row(createNaturalNumber(numberOfPerson));
+        StringBuilder sb = new StringBuilder();
+
+        //given
+        row.generateRow(sb,createPosition(0), LadderPosition.createLadderPosition(createPosition(1),createPosition(1)));
+
+        //then
+        assertEquals("0 0 0 \n", sb.toString());
+    }
+
+    @Test
+    void generateRowWithLine() {
+        //when
+        int numberOfPerson = 3;
+        Row row = new Row(createNaturalNumber(numberOfPerson));
+        row.drawLine(createPosition(0));
+        StringBuilder sb = new StringBuilder();
+
+        //given
+        row.generateRow(sb,createPosition(0),LadderPosition.createLadderPosition(createPosition(1),createPosition(1)));
+
+        //then
+        assertEquals("1 -1 0 \n", sb.toString());
+    }
+
+    @Test
+    void generateRowWithCurrentNode() {
+        //when
+        int numberOfPerson = 3;
+        Row row = new Row(createNaturalNumber(numberOfPerson));
+        row.drawLine(createPosition(0));
+        StringBuilder sb = new StringBuilder();
+
+        //given
+        row.generateRow(sb,createPosition(0),LadderPosition.createLadderPosition(createPosition(0),createPosition(0)));
+
+        //then
+        assertEquals("1* -1 0 \n", sb.toString());
+    }
 }
