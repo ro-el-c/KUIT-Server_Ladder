@@ -41,9 +41,9 @@ public class LadderGameTest {
 
         LadderGame ladderGame = new LadderGame(ladderCreator);
 
-        ladderCreator.drawLine(createPosition(0), createPosition(0));
-        ladderCreator.drawLine(createPosition(1),createPosition(1));
-        ladderCreator.drawLine(createPosition(2),createPosition(0));
+        ladderCreator.drawLine(LadderPosition.createLadderPosition(createPosition(0), createPosition(0)));
+        ladderCreator.drawLine(LadderPosition.createLadderPosition(createPosition(1),createPosition(1)));
+        ladderCreator.drawLine(LadderPosition.createLadderPosition(createPosition(2),createPosition(0)));
 
         //given
         Position nthOfPerson = createPosition(0);

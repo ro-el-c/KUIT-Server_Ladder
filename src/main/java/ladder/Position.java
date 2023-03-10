@@ -1,5 +1,7 @@
 package ladder;
 
+import java.util.Objects;
+
 public class Position {
     private int position;
 
@@ -41,5 +43,18 @@ public class Position {
 
     private static boolean isPosition(int number) {
         return number >= 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position1 = (Position) o;
+        return getPosition() == position1.getPosition();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPosition());
     }
 }
