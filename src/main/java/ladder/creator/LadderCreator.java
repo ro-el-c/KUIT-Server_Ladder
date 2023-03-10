@@ -1,17 +1,20 @@
 package ladder.creator;
 
+import ladder.LadderSize;
 import ladder.NaturalNumber;
 import ladder.Position;
 import ladder.Row;
+
+import static ladder.NaturalNumber.*;
 
 public class LadderCreator{
 
     private final Row[] rows;
 
-    public LadderCreator(NaturalNumber row, NaturalNumber numberOfPerson) {
-        rows = new Row[row.getNumber()];
-        for (int i = 0; i < row.getNumber(); i++) {
-            rows[i] = new Row(numberOfPerson);
+    public LadderCreator(LadderSize ladderSize) {
+        rows = new Row[ladderSize.getHeight()];
+        for (int i = 0; i < ladderSize.getHeight(); i++) {
+            rows[i] = new Row(createNaturalNumber(ladderSize.getNoOfPerson()));
         }
     }
 

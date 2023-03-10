@@ -18,7 +18,8 @@ public class LadderGameTest {
         //when
         NaturalNumber numberOfPerson = createNaturalNumber(3);
         NaturalNumber row = createNaturalNumber(1);
-        LadderCreator ladderCreator = new LadderCreator(row, numberOfPerson);
+        LadderSize ladderSize = LadderSize.create(row, numberOfPerson);
+        LadderCreator ladderCreator = new LadderCreator(ladderSize);
         LadderGame ladderGame = new LadderGame(ladderCreator);
 
 
@@ -35,7 +36,8 @@ public class LadderGameTest {
         //when
         NaturalNumber numberOfPerson = createNaturalNumber(4);
         NaturalNumber row = createNaturalNumber(3);
-        LadderCreator ladderCreator = new LadderCreator(row, numberOfPerson);
+        LadderSize ladderSize = LadderSize.create(row, numberOfPerson);
+        LadderCreator ladderCreator = new LadderCreator(ladderSize);
 
         LadderGame ladderGame = new LadderGame(ladderCreator);
 

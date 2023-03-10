@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ladder.NodeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-10T05:34:23" hostname="gimjeong-uui-MacBookAir.local" time="0.001">
+  <properties/>
+  <testcase name="moveCenter()" classname="ladder.NodeTest" time="0.001"/>
+  <testcase name="moveLeft()" classname="ladder.NodeTest" time="0.0"/>
+  <testcase name="moveRight()" classname="ladder.NodeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
