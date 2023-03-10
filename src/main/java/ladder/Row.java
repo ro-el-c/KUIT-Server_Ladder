@@ -1,8 +1,9 @@
 package ladder;
 
+import static ladder.NaturalNumber.*;
+
 public class Row {
     Node[] nodes;
-
 
     public Row(NaturalNumber numberOfPerson) {
         nodes = new Node[numberOfPerson.getNumber()];
@@ -30,11 +31,13 @@ public class Row {
     }
 
     private void validateDrawLinePosition(Position startPosition) {
-        validatePositionSize(startPosition);
-        if (nodes[startPosition.getPosition()].isLeft() ||
-                nodes[startPosition.getPosition() + 1].isRight()) {
+        if (!canInstallLine(startPosition)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public boolean canInstallLine(Position startPosition) {
+        return startPosition.getPosition() < nodes.length - 1 && !nodes[startPosition.getPosition()].isLeft() && !nodes[startPosition.getPosition()+1].isRight();
     }
 
     public void generateRow(StringBuilder sb, Position currentRow, LadderPosition ladderPosition) {

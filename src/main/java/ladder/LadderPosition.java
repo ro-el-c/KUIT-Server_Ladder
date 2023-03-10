@@ -27,7 +27,7 @@ public class LadderPosition {
         return col.getPosition();
     }
 
-    static LadderPosition createLadderPosition(Position row, Position col) {
+    public static LadderPosition createLadderPosition(Position row, Position col) {
         return new LadderPosition(row, col);
     }
 

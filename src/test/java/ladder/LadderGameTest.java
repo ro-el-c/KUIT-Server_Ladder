@@ -1,5 +1,6 @@
 package ladder;
 
+import ladder.creator.CustomLadderCreator;
 import ladder.creator.LadderCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ public class LadderGameTest {
         NaturalNumber numberOfPerson = createNaturalNumber(3);
         NaturalNumber row = createNaturalNumber(1);
         LadderSize ladderSize = LadderSize.create(row, numberOfPerson);
-        LadderCreator ladderCreator = new LadderCreator(ladderSize);
+        LadderCreator ladderCreator = new CustomLadderCreator(ladderSize);
         LadderGame ladderGame = new LadderGame(ladderCreator);
 
 
@@ -37,7 +38,7 @@ public class LadderGameTest {
         NaturalNumber numberOfPerson = createNaturalNumber(4);
         NaturalNumber row = createNaturalNumber(3);
         LadderSize ladderSize = LadderSize.create(row, numberOfPerson);
-        LadderCreator ladderCreator = new LadderCreator(ladderSize);
+        LadderCreator ladderCreator = new CustomLadderCreator(ladderSize);
 
         LadderGame ladderGame = new LadderGame(ladderCreator);
 
@@ -62,6 +63,18 @@ public class LadderGameTest {
 
         //then
         assertEquals(0, ladderGame.run(nthOfPerson));
+    }
+
+    @Test
+    @DisplayName("Random")
+    void randomLadderTest() {
+
+        //when
+        int numberOfPerson = 5;
+        int row = 10;
+        LadderGame ladderGame = LadderGameFactory.randomLadderGame(LadderSize.create(createNaturalNumber(row), createNaturalNumber(numberOfPerson)));
+
+        ladderGame.run(createPosition(0));
     }
 
 }

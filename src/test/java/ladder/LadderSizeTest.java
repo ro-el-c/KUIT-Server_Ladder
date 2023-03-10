@@ -13,4 +13,9 @@ class LadderSizeTest {
         assertEquals(1,ladderSize.getNoOfPerson());
     }
 
+    @Test
+    void getSize() {
+        LadderSize ladderSize = LadderSize.create(NaturalNumber.createNaturalNumber(2), NaturalNumber.createNaturalNumber(1));
+        assertEquals(2,ladderSize.getSize());
+    }
 }

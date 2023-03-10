@@ -1,8 +1,8 @@
 package ladder;
 
 public class LadderSize {
-    NaturalNumber height;
-    NaturalNumber noOfPerson;
+    private final NaturalNumber height;
+    private final NaturalNumber noOfPerson;
 
     private LadderSize(NaturalNumber height, NaturalNumber noOfPerson) {
         this.height = height;
@@ -15,6 +15,10 @@ public class LadderSize {
 
     public int getNoOfPerson() {
         return noOfPerson.getNumber();
+    }
+
+    public int getSize() {
+        return getHeight()*getNoOfPerson();
     }
 
     static LadderSize create(NaturalNumber height, NaturalNumber noOfPerson) {
