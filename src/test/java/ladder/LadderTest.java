@@ -36,22 +36,22 @@ public class LadderTest {
         ladder.drawLine(2,0);
 
         //given
-        int nthOfPerson = 1;
-
-        //then
-        assertEquals(3,ladder.run(nthOfPerson));
-
-        //given
-        nthOfPerson = 2;
+        int nthOfPerson = 0;
 
         //then
         assertEquals(2,ladder.run(nthOfPerson));
 
         //given
-        nthOfPerson = 3;
+        nthOfPerson = 1;
 
         //then
         assertEquals(1,ladder.run(nthOfPerson));
+
+        //given
+        nthOfPerson = 2;
+
+        //then
+        assertEquals(0,ladder.run(nthOfPerson));
     }
 
 }

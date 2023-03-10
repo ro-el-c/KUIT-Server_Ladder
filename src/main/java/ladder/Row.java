@@ -15,24 +15,24 @@ public class Row {
         row[startPosition + 1] = -1;
     }
 
-    public int nextPosition(int nthOfPerson) {
-        validateNthOfPerson(nthOfPerson);
+    public int nextPosition(int position) {
+        validatePosition(position);
 
-        if (isNoLine(nthOfPerson)) {
-            return nthOfPerson;
+        if (isNoLine(position)) {
+            return position;
         }
-        if (isLeft(nthOfPerson)) {
-            return nthOfPerson - 1;
+        if (isLeft(position)) {
+            return position - 1;
         }
-        return nthOfPerson + 1;
+        return position + 1;
     }
 
-    private boolean isLeft(int nthOfPerson) {
-        return row[nthOfPerson - 1] == -1;
+    private boolean isLeft(int position) {
+        return row[position] == -1;
     }
 
-    private boolean isNoLine(int nthOfPerson) {
-        return row[nthOfPerson - 1] == 0;
+    private boolean isNoLine(int position) {
+        return row[position] == 0;
     }
 
     private void validateNumberOfPerson(int numberOfPerson) {
@@ -41,8 +41,8 @@ public class Row {
         }
     }
 
-    private void validateNthOfPerson(int nthOfPerson) {
-        if (nthOfPerson > row.length || nthOfPerson < 1) {
+    private void validatePosition(int position) {
+        if (position >= row.length || position < 0) {
             throw new IllegalArgumentException();
         }
     }

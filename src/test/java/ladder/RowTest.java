@@ -16,10 +16,10 @@ class RowTest {
         Row row = new Row(numberOfPerson);
 
         //given
-        int nthOfPerson = 1;
+        int position = 0;
 
         //then
-        assertEquals(1, row.nextPosition(nthOfPerson));
+        assertEquals(0, row.nextPosition(position));
     }
 
     @Test
@@ -31,16 +31,16 @@ class RowTest {
         Row row = new Row(numberOfPerson);
         row.drawLine(0);
         //given
-        int nthOfPerson = 1;
+        int position = 0;
 
         //then
-        assertEquals(2, row.nextPosition(nthOfPerson));
+        assertEquals(1, row.nextPosition(position));
 
         //given
-        nthOfPerson = 2;
+        position = 1;
 
         //then
-        assertEquals(1, row.nextPosition(nthOfPerson));
+        assertEquals(0, row.nextPosition(position));
     }
 
     @Test
@@ -54,22 +54,22 @@ class RowTest {
 
 
         //given
-        int nthOfPerson = 1;
+        int position = 0;
 
         //then
-        assertEquals(2, row.nextPosition(nthOfPerson));
+        assertEquals(1, row.nextPosition(position));
 
         //given
-        nthOfPerson = 2;
+        position = 1;
 
         //then
-        assertEquals(1, row.nextPosition(nthOfPerson));
+        assertEquals(0, row.nextPosition(position));
 
         //given
-        nthOfPerson = 3;
+        position = 2;
 
         //then
-        assertEquals(3, row.nextPosition(nthOfPerson));
+        assertEquals(2, row.nextPosition(position));
     }
 
     @Test
@@ -86,10 +86,10 @@ class RowTest {
         Row row = new Row(numberOfPerson);
 
         //given
-        int nthOfPerson = 4;
+        int position = 3;
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> row.nextPosition(nthOfPerson));
+        assertThrows(IllegalArgumentException.class, () -> row.nextPosition(position));
     }
 
     @Test
@@ -100,10 +100,10 @@ class RowTest {
         Row row = new Row(numberOfPerson);
 
         //given
-        int nthOfPerson = 0;
+        int position = -1;
 
         //then
-        assertThrows(IllegalArgumentException.class, () -> row.nextPosition(nthOfPerson));
+        assertThrows(IllegalArgumentException.class, () -> row.nextPosition(position));
     }
 
 
