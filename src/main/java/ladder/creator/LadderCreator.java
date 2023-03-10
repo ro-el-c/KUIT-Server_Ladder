@@ -1,10 +1,14 @@
-package ladder;
+package ladder.creator;
 
-public class Ladder {
+import ladder.NaturalNumber;
+import ladder.Position;
+import ladder.Row;
+
+public class LadderCreator{
 
     private final Row[] rows;
 
-    public Ladder(NaturalNumber row, NaturalNumber numberOfPerson) {
+    public LadderCreator(NaturalNumber row, NaturalNumber numberOfPerson) {
         rows = new Row[row.getNumber()];
         for (int i = 0; i < row.getNumber(); i++) {
             rows[i] = new Row(numberOfPerson);
@@ -15,13 +19,7 @@ public class Ladder {
         rows[row.getPosition()].drawLine(col);
     }
 
-
-    public int run(Position position) {
-
-        for (int i = 0; i < rows.length; i++) {
-            rows[i].nextPosition(position);
-        }
-
-        return position.getPosition();
+    public Row[] getRow() {
+        return rows;
     }
 }
