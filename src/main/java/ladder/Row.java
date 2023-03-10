@@ -1,49 +1,38 @@
 package ladder;
 
 public class Row {
+    Node[] nodes;
 
-    int[] row;
 
     public Row(NaturalNumber numberOfPerson) {
-        row = new int[numberOfPerson.getNumber()];
+        nodes = new Node[numberOfPerson.getNumber()];
+        for (int i = 0; i < numberOfPerson.getNumber(); i++) {
+            nodes[i] = Node.createCenterNode();
+        }
     }
 
     public void drawLine(Position startPosition) {
         validateDrawLinePosition(startPosition);
-        row[startPosition.getPosition()] = Direction.RIGHT.getDirection();
-        row[startPosition.getPosition() + 1] = Direction.LEFT.getDirection();
-    }
 
-    private void validateDrawLinePosition(Position startPosition) {
-        validatePositionSize(startPosition);
-        if (row[startPosition.getPosition()] == Direction.LEFT.getDirection() ||
-                row[startPosition.getPosition() + 1] == Direction.RIGHT.getDirection()) {
-            throw new IllegalArgumentException();
-        }
+        nodes[startPosition.getPosition()] = Node.createRightNode();
+        nodes[startPosition.getPosition() + 1] = Node.createLeftNode();
     }
 
     public void nextPosition(Position position) {
         validatePositionSize(position);
-        if (isNoLine(position)) {
-            return;
-        }
-        if (isLeft(position)) {
-            position.goLeft();
-            return;
-        }
-        position.goRight();
-    }
-
-    private boolean isLeft(Position position) {
-        return row[position.getPosition()] == Direction.LEFT.getDirection();
-    }
-
-    private boolean isNoLine(Position position) {
-        return row[position.getPosition()] == Direction.CENTER.getDirection();
+        nodes[position.getPosition()].move(position);
     }
 
     private void validatePositionSize(Position position) {
-        if (!position.isSmaller(row.length)) {
+        if (!position.isSmaller(nodes.length)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDrawLinePosition(Position startPosition) {
+        validatePositionSize(startPosition);
+        if (nodes[startPosition.getPosition()].isLeft() ||
+                nodes[startPosition.getPosition() + 1].isRight()) {
             throw new IllegalArgumentException();
         }
     }
