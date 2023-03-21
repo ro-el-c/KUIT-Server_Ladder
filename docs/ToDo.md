@@ -23,7 +23,8 @@
 - [x] Position 에서 사용하는 Ladder 없애기
 - [x] pointX, pointY wrapper class
 - [x] 사다리 라인 생성 시 1, -1, 0 상수 enum 처리
-- [ ] 테스트 코드 위치 바로잡기
+- [x] 테스트 코드 위치 바로잡기
+  - 한 변수에 대한 validation 을 쪼개어 작성하여 테스트 코드를 옳게 작성했는지 의문
 - [x] validation 메서드 본인 자리 찾아주기
   - 주관대로 완료
 
