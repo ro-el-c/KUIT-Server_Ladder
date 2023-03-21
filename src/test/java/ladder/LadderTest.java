@@ -9,45 +9,33 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LadderTest {
     Ladder ladder;
-    Position position;
 
     @Test
-    @DisplayName("사다리 만들기")
+    @DisplayName("사다리 만들기 - Ladder")
     @BeforeEach
     void makeLadder(){
+        // 사람 부족
+        assertThrows(IllegalArgumentException.class, () -> new Ladder(3,1));
+        // 사다리 층 부족
+        assertThrows(IllegalArgumentException.class, () -> new Ladder(2,2));
         ladder = new Ladder(6, 4);
     }
 
     @Test
-    @DisplayName("사다리 만들기 유효성 검사")
-    void checkLadder(){
-        assertThrows(IllegalArgumentException.class, () -> new Ladder(3,3));
-    }
-
-    @Test
-    @DisplayName("Position 유효성 검사")
-    void isPositionRight(){
-        assertThrows(IllegalArgumentException.class, () -> new Position(0,1, ladder));
-        new Position(1,1, ladder);
-    }
-
-    @Test
-    @DisplayName("사다리라인 만들기")
+    @DisplayName("사다리라인 만들기 - drawLine")
     void drawLine(){
-        // position -> 사다리라인의 왼쪽 좌표
-        position = new Position(1, 1, ladder);
-        ladder.drawLine(position);
+        ladder.drawLine(new Position(1, 1));
 
-        // 사다리라인 만들고 해당 좌표에 Position 생성 유효성 검사
-        assertThrows(IllegalArgumentException.class, () -> new Position(1,2, ladder));
+        // 이미 사다리 라인이 존재할 때, 생성할 수 없음
+        assertThrows(IllegalArgumentException.class, () -> ladder.drawLine(new Position(1, 2)));
     }
 
     @Test
-    @DisplayName("사다리타기")
+    @DisplayName("사다리타기 - run")
     void run(){
-        ladder.drawLine(new Position(1, 0, ladder));
-        ladder.drawLine(new Position(2, 2, ladder));
-        ladder.drawLine(new Position(4, 1, ladder));
+        ladder.drawLine(new Position(1, 1));
+        ladder.drawLine(new Position(2, 2));
+        ladder.drawLine(new Position(4, 1));
         assertEquals(1, ladder.run(3));
     }
 }
