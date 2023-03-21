@@ -35,7 +35,7 @@ public class Ladder {
     }
 
     private static void validateRow(int row) {
-        if (row < 1) {
+        if (row < 3) {
             throw new IllegalArgumentException("사다리 층이 부족합니다.");
         }
     }
