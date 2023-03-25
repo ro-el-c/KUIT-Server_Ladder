@@ -1,8 +1,7 @@
 package ladder;
 
 // 사람 - 2명 이상
-// 사다리 - 2층 이상
-//  -> 사다리 라인이 (사람수-1)개 이상이라고 "가정"
+// 사다리 - 3층 이상
 
 public class Ladder {
     //private final int[][] rows;
