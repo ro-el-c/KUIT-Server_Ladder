@@ -1,10 +1,11 @@
 package ladder;
 
-import org.junit.jupiter.api.BeforeAll;
+import ladder.creator.LadderCreator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.NaturalNumber.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LadderCreatorTest {
@@ -15,8 +16,8 @@ class LadderCreatorTest {
     @BeforeEach
     void makeLadder(){
         // when
-        NaturalNumber row = new NaturalNumber(6);
-        NaturalNumber numberOfPerson = new NaturalNumber(4);
+        NaturalNumber row = createNaturalNumber(6);
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
         ladderCreator = new LadderCreator(row, numberOfPerson);
     }
 
@@ -24,8 +25,8 @@ class LadderCreatorTest {
     @DisplayName("사다리라인 만들기 유효성 검사")
     void drawLine(){
         // give
-        NaturalNumber positionRow = new NaturalNumber(1);
-        NaturalNumber positionCol = new NaturalNumber(2);
+        NaturalNumber positionRow = createNaturalNumber(1);
+        NaturalNumber positionCol = createNaturalNumber(2);
         Position position = new Position(positionRow, positionCol, this.ladderCreator);
 
         // then
