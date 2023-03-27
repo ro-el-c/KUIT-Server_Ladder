@@ -12,14 +12,14 @@ public class Row {
 
     public void draw(int positionY) {
         validatePositionY(positionY);
-        floor[positionY] = RIGHT.value();
-        floor[positionY+1] = LEFT.value();
+        floor[positionY] = RIGHT.getDirection();
+        floor[positionY+1] = LEFT.getDirection();
     }
 
     public int nextPosition(int ladderNum) {
-        if (floor[ladderNum] == RIGHT.value()) return RIGHT.move();
-        if (floor[ladderNum] == LEFT.value()) return LEFT.move();
-        return DOWN.move();
+        if (floor[ladderNum] == RIGHT.getDirection()) return RIGHT.getDirection();
+        if (floor[ladderNum] == LEFT.getDirection()) return LEFT.getDirection();
+        return DOWN.getDirection();
     }
 
     private void validate(int numberOfPerson) {

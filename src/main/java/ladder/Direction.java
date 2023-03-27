@@ -10,10 +10,7 @@ public enum Direction {
     }
 
     private final int value;
-    public int move(){
-        return value;
-    }
-    public int value(){
+    public int getDirection(){
         return value;
     }
 }
