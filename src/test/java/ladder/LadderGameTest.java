@@ -1,6 +1,7 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
+import ladder.creator.UserMadeLadderCreator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,8 +19,8 @@ class LadderGameTest {
     void makeLadder(){
         NaturalNumber row = createNaturalNumber(6);
         NaturalNumber numberOfPerson = createNaturalNumber(4);
-        ladderCreator = new LadderCreator(row, numberOfPerson);
-        ladderGame = new LadderGame(ladderCreator);
+        LadderSize ladderSize = new LadderSize(row, numberOfPerson);
+        ladderCreator = new UserMadeLadderCreator(ladderSize);
     }
 
     @Test
