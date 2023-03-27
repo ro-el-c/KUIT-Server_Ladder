@@ -5,12 +5,9 @@ import java.awt.*;
 import static ladder.Direction.*;
 
 public class Row {
-    //int[] floor;
-
     Node[] nodes;
 
     public Row(NaturalNumber numberOfPerson) {
-        //this.floor = new int[numberOfPerson.getValue()+1]; // 사람이 사다리를 고를 때, 자연수를 선택하도록
         nodes = new Node[numberOfPerson.getValue()+1];
         for (int i=0; i<numberOfPerson.getValue()+1; i++){
             nodes[i] = Node.createDownNode();
