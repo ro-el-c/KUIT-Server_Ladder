@@ -1,33 +1,45 @@
 package ladder;
 
+import java.awt.*;
+
 import static ladder.Direction.*;
 
 public class Row {
-    int[] floor;
+    //int[] floor;
+
+    Node[] nodes;
 
     public Row(NaturalNumber numberOfPerson) {
-        this.floor = new int[numberOfPerson.getValue()+1]; // 사람이 사다리를 고를 때, 자연수를 선택하도록
+        //this.floor = new int[numberOfPerson.getValue()+1]; // 사람이 사다리를 고를 때, 자연수를 선택하도록
+        nodes = new Node[numberOfPerson.getValue()+1];
+        for (int i=0; i<numberOfPerson.getValue()+1; i++){
+            nodes[i] = Node.createDownNode();
+        }
     }
 
     public void draw(NaturalNumber positionY) { // 왼쪽으로 사다리 라인 생성
         validatePositionY(positionY);
-        floor[positionY.getValue()] = LEFT.getDirection();
-        floor[positionY.getValue()-1] = RIGHT.getDirection();
+        nodes[positionY.getValue()] = Node.createLeftNode();
+        nodes[positionY.getValue()-1] = Node.createRightNode();
     }
 
-    public int nextPosition(LadderPlayPoint ladderNum) {
-        if (floor[ladderNum.getValue()] == LEFT.getDirection()) return LEFT.getDirection();
-        if (floor[ladderNum.getValue()] == RIGHT.getDirection()) return RIGHT.getDirection();
-        return DOWN.getDirection();
+    public void nextPosition(LadderPlayPoint ladderNum) {
+        if (nodes[ladderNum.getValue()].isLeft()){
+            ladderNum.goLeft();
+            return;
+        }
+
+        if (nodes[ladderNum.getValue()].isRight())
+            ladderNum.goRight();
     }
 
 
     private void validatePositionY(NaturalNumber positionY) {
-        if(floor[positionY.getValue()] != 0)
+        if(nodes[positionY.getValue()].isRight() || nodes[positionY.getValue()].isLeft())
             throw new IllegalArgumentException("사다리 라인이 이미 존재합니다.");
     }
 
     public int getNumberOfPerson(){
-        return floor.length;
+        return nodes.length;
     }
 }

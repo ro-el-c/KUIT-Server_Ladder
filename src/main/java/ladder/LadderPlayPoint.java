@@ -1,7 +1,7 @@
 package ladder;
 
 public class LadderPlayPoint {
-    private int playPoint;
+    private static int playPoint;
 
     public LadderPlayPoint(int playPoint) {
         validatePlayPoint(playPoint);
@@ -17,7 +17,11 @@ public class LadderPlayPoint {
         return this.playPoint;
     }
 
-    public void plus(int plusNumber){
-        this.playPoint += plusNumber;
+    public void goRight(){
+        playPoint += 1;
+    }
+
+    public void goLeft(){
+        playPoint -= 1;
     }
 }

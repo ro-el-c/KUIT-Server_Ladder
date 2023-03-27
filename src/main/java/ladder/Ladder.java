@@ -21,7 +21,7 @@ public class Ladder {
 
     public int run(LadderPlayPoint ladderNum) {
         for(int i=0; i<rows.length; i++) {
-            ladderNum.plus(rows[i].nextPosition(ladderNum));
+            rows[i].nextPosition(ladderNum);
         }
 
         return ladderNum.getValue();
