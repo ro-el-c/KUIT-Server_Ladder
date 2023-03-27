@@ -19,13 +19,12 @@ public class Ladder {
         rows[position.getX().getValue()].draw(position.getY());
     }
 
-
-    public int run(int ladderNum) {
+    public int run(LadderPlayPoint ladderNum) {
         for(int i=0; i<rows.length; i++) {
-            ladderNum += rows[i].nextPosition(ladderNum);
+            ladderNum.plus(rows[i].nextPosition(ladderNum));
         }
 
-        return ladderNum;
+        return ladderNum.getValue();
     }
 
 

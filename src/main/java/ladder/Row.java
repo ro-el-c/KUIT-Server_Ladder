@@ -15,9 +15,9 @@ public class Row {
         floor[positionY.getValue()-1] = RIGHT.getDirection();
     }
 
-    public int nextPosition(int ladderNum) {
-        if (floor[ladderNum] == LEFT.getDirection()) return LEFT.getDirection();
-        if (floor[ladderNum] == RIGHT.getDirection()) return RIGHT.getDirection();
+    public int nextPosition(LadderPlayPoint ladderNum) {
+        if (floor[ladderNum.getValue()] == LEFT.getDirection()) return LEFT.getDirection();
+        if (floor[ladderNum.getValue()] == RIGHT.getDirection()) return RIGHT.getDirection();
         return DOWN.getDirection();
     }
 
