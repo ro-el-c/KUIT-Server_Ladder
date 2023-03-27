@@ -5,32 +5,29 @@ import static ladder.Direction.*;
 public class Row {
     int[] floor;
 
-    public Row(int numberOfPerson) {
-        validate(numberOfPerson);
-        this.floor = new int[numberOfPerson];
+    public Row(NaturalNumber numberOfPerson) {
+        this.floor = new int[numberOfPerson.getValue()+1]; // 사람이 사다리를 고를 때, 자연수를 선택하도록
     }
 
-    public void draw(int positionY) {
+    public void draw(int positionY) { // 왼쪽으로 사다리 라인 생성
         validatePositionY(positionY);
-        floor[positionY] = RIGHT.getDirection();
-        floor[positionY+1] = LEFT.getDirection();
+        floor[positionY] = LEFT.getDirection();
+        floor[positionY-1] = RIGHT.getDirection();
     }
 
     public int nextPosition(int ladderNum) {
-        if (floor[ladderNum] == RIGHT.getDirection()) return RIGHT.getDirection();
         if (floor[ladderNum] == LEFT.getDirection()) return LEFT.getDirection();
+        if (floor[ladderNum] == RIGHT.getDirection()) return RIGHT.getDirection();
         return DOWN.getDirection();
     }
 
-    private void validate(int numberOfPerson) {
-        if(numberOfPerson < 2)
-            throw new IllegalArgumentException("사람이 너무 적습니다.");
-    }
 
     private void validatePositionY(int positionY) {
-        if(positionY >= floor.length)
-            throw new IllegalArgumentException("범위를 벗어나 사다리를 그릴 수 없습니다.");
         if(floor[positionY] != 0)
             throw new IllegalArgumentException("사다리 라인이 이미 존재합니다.");
+    }
+
+    public int getNumberOfPerson(){
+        return floor.length;
     }
 }

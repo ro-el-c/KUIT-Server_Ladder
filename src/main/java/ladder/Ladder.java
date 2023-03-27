@@ -1,29 +1,24 @@
 package ladder;
 
-// 사람 - 2명 이상
-// 사다리 - 3층 이상
+// 사람, 사다리 - 자연수 (1 이상)
+// [가정 수정]
+// 사다리 라인 그릴 위치 (Position)의 x, y -> 1 이상이어야 하므로, 사다리 라인을 왼쪽으로 그린다고 가정
 
 public class Ladder {
     //private final int[][] rows;
     private final Row[] rows;
 
-    public Ladder(int row, int numberOfPerson) {
-        validateRow(row);
-        rows = new Row[row];
-        for (int i = 0; i < row; i++) {
+    public Ladder(NaturalNumber row, NaturalNumber numberOfPerson) {
+        rows = new Row[row.getValue()];
+        for (int i = 0; i < row.getValue(); i++) {
             rows[i] = new Row(numberOfPerson);
         }
     }
 
     public void drawLine(Position position) {
-        validatePositionX(position.getX());
         rows[position.getX()].draw(position.getY());
     }
 
-    private void validatePositionX(int positionX) {
-        if(positionX==0 || positionX >= rows.length-1)
-            throw new IllegalArgumentException("범위를 벗어나 사다리 라인을 그릴 수 없습니다.");
-    }
 
     public int run(int ladderNum) {
         for(int i=0; i<rows.length; i++) {
@@ -33,9 +28,12 @@ public class Ladder {
         return ladderNum;
     }
 
-    private static void validateRow(int row) {
-        if (row < 3) {
-            throw new IllegalArgumentException("사다리 층이 부족합니다.");
-        }
+
+    public int getNumberOfFloors(){
+        return rows.length;
+    }
+
+    public int getNumberOfPerson(){
+        return rows[0].getNumberOfPerson();
     }
 }
