@@ -1,5 +1,7 @@
 package ladder;
 
+import ladder.creator.LadderCreator;
+
 public class Position {
     NaturalNumber x;
     NaturalNumber y;
@@ -7,9 +9,9 @@ public class Position {
 
     public Position(NaturalNumber positionRow, NaturalNumber positionCol, LadderCreator ladderCreator) {
         validateX(positionRow, ladderCreator);
-        this.x = new NaturalNumber(positionRow.getValue());
+        this.x = NaturalNumber.createNaturalNumber(positionRow.getValue());
         validateY(positionCol, ladderCreator);
-        this.y = new NaturalNumber(positionCol.getValue());
+        this.y = NaturalNumber.createNaturalNumber(positionCol.getValue());
     }
 
     public NaturalNumber getX() {
