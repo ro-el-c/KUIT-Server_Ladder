@@ -12,12 +12,12 @@ public class Position {
         this.y = new NaturalNumber(pointY.getValue());
     }
 
-    public int getX() {
-        return x.getValue();
+    public NaturalNumber getX() {
+        return x;
     }
 
-    public int getY() {
-        return y.getValue();
+    public NaturalNumber getY() {
+        return y;
     }
 
     // TODO: 적절한 validation 위치 더 고민해보기

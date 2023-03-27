@@ -9,10 +9,10 @@ public class Row {
         this.floor = new int[numberOfPerson.getValue()+1]; // 사람이 사다리를 고를 때, 자연수를 선택하도록
     }
 
-    public void draw(int positionY) { // 왼쪽으로 사다리 라인 생성
+    public void draw(NaturalNumber positionY) { // 왼쪽으로 사다리 라인 생성
         validatePositionY(positionY);
-        floor[positionY] = LEFT.getDirection();
-        floor[positionY-1] = RIGHT.getDirection();
+        floor[positionY.getValue()] = LEFT.getDirection();
+        floor[positionY.getValue()-1] = RIGHT.getDirection();
     }
 
     public int nextPosition(int ladderNum) {
@@ -22,8 +22,8 @@ public class Row {
     }
 
 
-    private void validatePositionY(int positionY) {
-        if(floor[positionY] != 0)
+    private void validatePositionY(NaturalNumber positionY) {
+        if(floor[positionY.getValue()] != 0)
             throw new IllegalArgumentException("사다리 라인이 이미 존재합니다.");
     }
 

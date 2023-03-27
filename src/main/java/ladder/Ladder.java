@@ -16,7 +16,7 @@ public class Ladder {
     }
 
     public void drawLine(Position position) {
-        rows[position.getX()].draw(position.getY());
+        rows[position.getX().getValue()].draw(position.getY());
     }
 
 
