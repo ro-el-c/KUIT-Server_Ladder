@@ -1,40 +1,44 @@
 package ladder;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LadderTest {
+class LadderGameTest {
     LadderCreator ladderCreator;
-    Ladder ladder;
+    LadderGame ladderGame;
 
     @Test
-    @DisplayName("사다리 만들기 - Ladder")
+    @DisplayName("사다리 만들기")
     @BeforeEach
     void makeLadder(){
-        ladderCreator = new LadderCreator(new NaturalNumber(6), new NaturalNumber(4));
-        ladder = new Ladder(ladderCreator);
+        NaturalNumber row = new NaturalNumber(6);
+        NaturalNumber numberOfPerson = new NaturalNumber(4);
+        ladderCreator = new LadderCreator(row, numberOfPerson);
+        ladderGame = new LadderGame(ladderCreator);
     }
 
     @Test
     @DisplayName("사다리라인 만들기 - drawLine")
     void drawLine(){
-        ladder.drawLine(new Position(new NaturalNumber(1), new NaturalNumber(2), this.ladderCreator));
+        NaturalNumber positionRow = new NaturalNumber(1);
+        NaturalNumber positionCol = new NaturalNumber(2);
+        Position position = new Position(positionRow, positionCol, this.ladderCreator);
+        ladderGame.drawLine(position);
 
         // 이미 사다리 라인이 존재할 때, 생성할 수 없음
-        assertThrows(IllegalArgumentException.class, () -> ladder.drawLine(new Position(new NaturalNumber(1), new NaturalNumber(2), this.ladderCreator)));
+        assertThrows(IllegalArgumentException.class, () -> ladderGame.drawLine(position));
     }
 
     @Test
     @DisplayName("사다리타기 - run")
     void run(){
-        ladder.drawLine(new Position(new NaturalNumber(1), new NaturalNumber(3), this.ladderCreator));
-        ladder.drawLine(new Position(new NaturalNumber(2), new NaturalNumber(4), this.ladderCreator));
-        ladder.drawLine(new Position(new NaturalNumber(4), new NaturalNumber(4), this.ladderCreator));
-        ladder.drawLine(new Position(new NaturalNumber(3), new NaturalNumber(2), this.ladderCreator));
-        assertEquals(3, ladder.run(new LadderPlayPoint(2)));
+        ladderGame.drawLine(new Position(new NaturalNumber(1), new NaturalNumber(3), this.ladderCreator));
+        ladderGame.drawLine(new Position(new NaturalNumber(2), new NaturalNumber(4), this.ladderCreator));
+        ladderGame.drawLine(new Position(new NaturalNumber(4), new NaturalNumber(4), this.ladderCreator));
+        ladderGame.drawLine(new Position(new NaturalNumber(3), new NaturalNumber(2), this.ladderCreator));
+        assertEquals(3, ladderGame.run(new LadderPlayPoint(2)));
     }
 }
