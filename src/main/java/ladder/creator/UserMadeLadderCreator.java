@@ -1,17 +1,19 @@
 package ladder.creator;
 
 import ladder.LadderSize;
-import ladder.NaturalNumber;
 import ladder.Position;
 import ladder.Row;
 
 import static ladder.NaturalNumber.createNaturalNumber;
 
-public class LadderCreator {
+public class UserMadeLadderCreator implements LadderCreator {
     private final Row[] rows;
 
-    public LadderCreator(LadderSize ladderSize) {
-
+    public UserMadeLadderCreator(LadderSize ladderSize){
+        rows = new Row[ladderSize.getRow()];
+        for (int i = 0; i < ladderSize.getRow(); i++) {
+            rows[i] = new Row(createNaturalNumber(ladderSize.getNumberOfPerson()));
+        }
     }
 
     public void drawLine(Position position) {
