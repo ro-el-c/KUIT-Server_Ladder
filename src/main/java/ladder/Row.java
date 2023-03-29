@@ -1,9 +1,5 @@
 package ladder;
 
-import java.awt.*;
-
-import static ladder.Direction.*;
-
 public class Row {
     Node[] nodes;
 
@@ -29,7 +25,6 @@ public class Row {
         if (nodes[ladderNum.getValue()].isRight())
             ladderNum.goRight();
     }
-
 
     private void validatePositionY(NaturalNumber positionY) {
         if(nodes[positionY.getValue()].isRight() || nodes[positionY.getValue()].isLeft())
