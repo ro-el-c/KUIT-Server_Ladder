@@ -28,7 +28,7 @@ public class Position {
             throw new IllegalArgumentException("사다리 층을 벗어났습니다.");
     }
     private void validateY(NaturalNumber positionCol, LadderCreator ladderCreator){
-        if(positionCol.getValue() == 1 || positionCol.getValue() > ladderCreator.getNumberOfPerson())
+        if(positionCol.getValue() > ladderCreator.getNumberOfPerson()-1)
             throw new IllegalArgumentException("사다리 라인을 생성할 수 있는 위치가 아닙니다.");
     }
 }

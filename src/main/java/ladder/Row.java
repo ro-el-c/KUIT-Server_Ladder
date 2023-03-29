@@ -16,8 +16,8 @@ public class Row {
 
     public void draw(NaturalNumber positionY) { // 왼쪽으로 사다리 라인 생성
         validatePositionY(positionY);
-        nodes[positionY.getValue()] = Node.createLeftNode();
-        nodes[positionY.getValue()-1] = Node.createRightNode();
+        nodes[positionY.getValue()] = Node.createRightNode();
+        nodes[positionY.getValue()+1] = Node.createLeftNode();
     }
 
     public void nextPosition(LadderPlayPoint ladderNum) {
@@ -37,6 +37,6 @@ public class Row {
     }
 
     public int getNumberOfPerson(){
-        return nodes.length;
+        return nodes.length-1;
     }
 }
