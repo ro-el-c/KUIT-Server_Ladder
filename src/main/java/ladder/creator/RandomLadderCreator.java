@@ -21,16 +21,16 @@ public class RandomLadderCreator implements LadderCreator{
     }
 
     private void drawLines(){
-        int cnt=0;
+        int lineCount=0;
         // TODO: 제약 조건에 의한 하드코딩 해결
-        while(cnt < totalLineNumber()){
+        while(lineCount < totalLineNumber()){
             NaturalNumber row = createNaturalNumber(randomNumberGenerator.getRandomNumber(ladderCreator.getNumberOfFloors()-2));
             NaturalNumber col = createNaturalNumber(randomNumberGenerator.getRandomNumber(ladderCreator.getNumberOfPerson()-1));
             Position position = new Position(row, col, this.ladderCreator);
 
             try{
                 ladderCreator.drawLine(position);
-                cnt++;
+                lineCount++;
             } catch (IllegalArgumentException e){
             }
         }
