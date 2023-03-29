@@ -6,10 +6,10 @@ import ladder.Row;
 
 import static ladder.NaturalNumber.createNaturalNumber;
 
-public class UserMadeLadderCreator implements LadderCreator {
+public class CustomLadderCreator implements LadderCreator {
     private final Row[] rows;
 
-    public UserMadeLadderCreator(LadderSize ladderSize){
+    public CustomLadderCreator(LadderSize ladderSize){
         rows = new Row[ladderSize.getRow()];
         for (int i = 0; i < ladderSize.getRow(); i++) {
             rows[i] = new Row(createNaturalNumber(ladderSize.getNumberOfPerson()));
