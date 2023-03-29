@@ -7,9 +7,11 @@ import ladder.Row;
 import static ladder.NaturalNumber.createNaturalNumber;
 
 public class CustomLadderCreator implements LadderCreator {
+    LadderSize ladderSize;
     private final Row[] rows;
 
     public CustomLadderCreator(LadderSize ladderSize){
+        this.ladderSize = ladderSize;
         rows = new Row[ladderSize.getRow()];
         for (int i = 0; i < ladderSize.getRow(); i++) {
             rows[i] = new Row(createNaturalNumber(ladderSize.getNumberOfPerson()));
@@ -31,4 +33,6 @@ public class CustomLadderCreator implements LadderCreator {
     public Row[] getRows(){
         return rows;
     }
+
+    public LadderSize getLadderSize(){ return ladderSize; }
 }
