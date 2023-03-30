@@ -1,11 +1,13 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
-import ladder.creator.UserMadeLadderCreator;
+import ladder.creator.CustomLadderCreator;
+import ladder.creator.RandomLadderCreator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.LadderSize.createLadderSize;
 import static ladder.NaturalNumber.createNaturalNumber;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,8 +21,9 @@ class LadderGameTest {
     void makeLadder(){
         NaturalNumber row = createNaturalNumber(6);
         NaturalNumber numberOfPerson = createNaturalNumber(4);
-        LadderSize ladderSize = new LadderSize(row, numberOfPerson);
-        ladderCreator = new UserMadeLadderCreator(ladderSize);
+        LadderSize ladderSize = createLadderSize(row, numberOfPerson);
+        ladderCreator = new CustomLadderCreator(ladderSize); // 지정 사다리 타기 게임 실행 확인을 위하여 작성한 테스트 코드
+        ladderGame = LadderGameFactory.createCustomLadderGame(ladderSize);
     }
 
     @Test
@@ -31,5 +34,15 @@ class LadderGameTest {
         ladderGame.drawLine(new Position(createNaturalNumber(4), createNaturalNumber(4), this.ladderCreator));
         ladderGame.drawLine(new Position(createNaturalNumber(3), createNaturalNumber(2), this.ladderCreator));
         assertEquals(3, ladderGame.run(new LadderPlayPoint(2)));
+    }
+
+    @Test
+    @DisplayName("랜덤 사다리타기 게임 실행")
+    void radomLadderRun(){
+        NaturalNumber row = createNaturalNumber(6);
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
+        LadderSize ladderSize = createLadderSize(row, numberOfPerson);
+        ladderGame = LadderGameFactory.createRandomLadderGame(ladderSize);
+        System.out.println(ladderGame.run(new LadderPlayPoint(3)));
     }
 }
