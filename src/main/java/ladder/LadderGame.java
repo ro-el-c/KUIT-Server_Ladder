@@ -9,10 +9,6 @@ public class LadderGame {
         this.ladderCreator = ladderCreator;
     }
 
-    public void drawLine(Position position) {
-        ladderCreator.drawLine(position);
-    }
-
     public int run(LadderPlayPoint ladderNum) {
         LadderRunner ladderRunner = new LadderRunner(ladderCreator.getRows());
         ladderRunner.run(ladderNum);
