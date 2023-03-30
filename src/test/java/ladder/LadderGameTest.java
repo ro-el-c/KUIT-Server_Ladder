@@ -27,12 +27,13 @@ class LadderGameTest {
     }
 
     @Test
-    @DisplayName("사다리타기 게임 실행")
-    void run(){
-        ladderGame.drawLine(new Position(createNaturalNumber(1), createNaturalNumber(3), this.ladderCreator));
-        ladderGame.drawLine(new Position(createNaturalNumber(2), createNaturalNumber(4), this.ladderCreator));
-        ladderGame.drawLine(new Position(createNaturalNumber(4), createNaturalNumber(4), this.ladderCreator));
-        ladderGame.drawLine(new Position(createNaturalNumber(3), createNaturalNumber(2), this.ladderCreator));
+    @DisplayName("지정 사다리타기 게임 실행")
+    void customLadderRun(){
+        ladderCreator.drawLine(new Position(createNaturalNumber(1), createNaturalNumber(2), ladderCreator));
+        ladderCreator.drawLine(new Position(createNaturalNumber(2), createNaturalNumber(3), ladderCreator));
+        ladderCreator.drawLine(new Position(createNaturalNumber(4), createNaturalNumber(3), ladderCreator));
+        ladderCreator.drawLine(new Position(createNaturalNumber(3), createNaturalNumber(1), ladderCreator));
+        ladderGame = new LadderGame(ladderCreator);
         assertEquals(3, ladderGame.run(new LadderPlayPoint(2)));
     }
 
