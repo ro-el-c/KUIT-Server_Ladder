@@ -24,4 +24,5 @@ public class Node {
     public boolean isLeft(){
         return direction.equals(Direction.LEFT);
     }
+    public int getDirection(){ return direction.getDirection(); }
 }

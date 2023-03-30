@@ -34,4 +34,12 @@ public class Row {
     public int getNumberOfPerson(){
         return nodes.length-1;
     }
+
+    public void printer(StringBuilder sb, int col, boolean isFloor) {
+        for (int i=1; i<nodes.length; i++){
+            sb.append(nodes[i].getDirection());
+            if(isFloor && i == col) sb.append("*");
+            sb.append("\t");
+        }
+    }
 }
