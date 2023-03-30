@@ -24,7 +24,7 @@
   - 사다리 라인의 사전 존재 여부
 
 ### 사다리 라인 자동생성
-- ~~가능하다면 `LadderGame`에 인터페이스를 활용한 의존성 주입을 통해 `LadderCreator`를 변경할 수 있도록 해본다.~~
+- ~~`LadderGame`에 인터페이스를 활용한 의존성 주입을 통해 `LadderCreator`를 변경할 수 있도록 해본다.~~
 - ~~정적 팩토리 메서드 패턴을 활용하여 LadderGame을 생성해보자.~~
   - e.g., `LadderGame ladderGame = LadderGameFactory.createRandomLadderGame()`
 
