@@ -35,7 +35,7 @@ public class Row {
         return nodes.length-1;
     }
 
-    public void printer(StringBuilder sb, int col, boolean isFloor) {
+    public void ladderPrinter(StringBuilder sb, int col, boolean isFloor) {
         for (int i=1; i<nodes.length; i++){
             sb.append(nodes[i].getDirection());
             if(isFloor && i == col) sb.append("*");
