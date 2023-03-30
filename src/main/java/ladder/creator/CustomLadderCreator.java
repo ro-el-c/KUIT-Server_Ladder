@@ -12,8 +12,8 @@ public class CustomLadderCreator implements LadderCreator {
 
     public CustomLadderCreator(LadderSize ladderSize){
         this.ladderSize = ladderSize;
-        rows = new Row[ladderSize.getRow()];
-        for (int i = 0; i < ladderSize.getRow(); i++) {
+        rows = new Row[ladderSize.getRow()+1];
+        for (int i = 0; i <= ladderSize.getRow(); i++) {
             rows[i] = new Row(createNaturalNumber(ladderSize.getNumberOfPerson()));
         }
     }
@@ -23,7 +23,7 @@ public class CustomLadderCreator implements LadderCreator {
     }
 
     public int getNumberOfFloors(){
-        return rows.length;
+        return rows.length-1;
     }
 
     public int getNumberOfPerson(){
