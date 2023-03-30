@@ -31,10 +31,14 @@ class LadderGameTest {
     void customLadderRun(){
         ladderCreator.drawLine(new Position(createNaturalNumber(1), createNaturalNumber(2), ladderCreator));
         ladderCreator.drawLine(new Position(createNaturalNumber(2), createNaturalNumber(3), ladderCreator));
-        ladderCreator.drawLine(new Position(createNaturalNumber(4), createNaturalNumber(3), ladderCreator));
+        ladderCreator.drawLine(new Position(createNaturalNumber(5), createNaturalNumber(3), ladderCreator));
+        ladderCreator.drawLine(new Position(createNaturalNumber(4), createNaturalNumber(1), ladderCreator));
+        ladderCreator.drawLine(new Position(createNaturalNumber(3), createNaturalNumber(3), ladderCreator));
+        ladderCreator.drawLine(new Position(createNaturalNumber(6), createNaturalNumber(2), ladderCreator));
         ladderCreator.drawLine(new Position(createNaturalNumber(3), createNaturalNumber(1), ladderCreator));
         ladderGame = new LadderGame(ladderCreator);
-        assertEquals(3, ladderGame.run(new LadderPlayPoint(2)));
+        assertEquals(3, ladderGame.run(new LadderPlayPoint(3)));
+        assertEquals(4, ladderGame.run(new LadderPlayPoint(2)));
     }
 
     @Test
@@ -44,6 +48,6 @@ class LadderGameTest {
         NaturalNumber numberOfPerson = createNaturalNumber(4);
         LadderSize ladderSize = createLadderSize(row, numberOfPerson);
         ladderGame = LadderGameFactory.createRandomLadderGame(ladderSize);
-        System.out.println(ladderGame.run(new LadderPlayPoint(3)));
+        System.out.println("사다리타기 게임 결과: " + ladderGame.run(new LadderPlayPoint(3)));
     }
 }
