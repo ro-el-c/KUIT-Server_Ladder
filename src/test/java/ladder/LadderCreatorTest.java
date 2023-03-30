@@ -1,11 +1,13 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
-import ladder.creator.UserMadeLadderCreator;
+import ladder.creator.CustomLadderCreator;
+import ladder.creator.RandomLadderCreator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.LadderSize.createLadderSize;
 import static ladder.NaturalNumber.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,8 +21,8 @@ class LadderCreatorTest {
         // when
         NaturalNumber row = createNaturalNumber(6);
         NaturalNumber numberOfPerson = createNaturalNumber(4);
-        LadderSize ladderSize = new LadderSize(row, numberOfPerson);
-        ladderCreator = new UserMadeLadderCreator(ladderSize);
+        LadderSize ladderSize = createLadderSize(row, numberOfPerson);
+        ladderCreator = new CustomLadderCreator(ladderSize);
     }
 
     @Test
@@ -36,5 +38,15 @@ class LadderCreatorTest {
 
         // then - 이미 사다리 라인이 존재할 때, 생성할 수 없음
         assertThrows(IllegalArgumentException.class, () -> ladderCreator.drawLine(position));
+    }
+
+    @Test
+    @DisplayName("랜덤 사다리 만들기")
+    void makeRandomLadder(){
+        // when
+        NaturalNumber row = createNaturalNumber(6);
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
+        LadderSize ladderSize = createLadderSize(row, numberOfPerson);
+        ladderCreator = new RandomLadderCreator(new CustomLadderCreator(ladderSize));
     }
 }
