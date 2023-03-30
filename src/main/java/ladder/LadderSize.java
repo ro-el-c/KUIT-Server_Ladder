@@ -20,5 +20,5 @@ public class LadderSize {
         return numberOfPerson.getValue();
     }
 
-    public int getLadderSize() { return (getRow()-2) * getNumberOfPerson(); }
+    public int getLadderSize() { return getRow() * getNumberOfPerson(); }
 }
